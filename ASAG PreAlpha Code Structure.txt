@@ -15,6 +15,9 @@ Directories
 	-	ModuleList.qml			// List of all modules, with initialization and stuff
 - 	Player
 	- 	Player.qml				// Ship for ingame - has modules,... already loaded (->DataManager)
+- 	Enemies
+	- 	Enemy.qml				// Baseclass for enemies, like modules
+	-	EnemyNames.qml			// One class per enemy
 - 	DataManager
 	- 	DataManager.qml			// Provides access to all data, performs loads/saves in background (->IOManager)
 	- 	IOManager.qml			// Manages access to files, provides raw data to DataManager (maybe + parsen in between?)
