@@ -13,7 +13,7 @@ EntityBase {
     property Scene sceneP: scene
     property alias controller: twoAxisController
 
-    property Enemy enemy: scene.enemy
+    property Enemy enemy: sceneP.enemy
 
     Rectangle {
         anchors.fill: parent
@@ -40,7 +40,7 @@ EntityBase {
         bodyType: Body.Dynamic
         categories: Box.Category1
 
-        property int speed: system.desktopPlatform ? // controlls (
+        property int speed: system.desktopPlatform ? // controls (
         twoAxisController.xAxis * 200 :  //  for desktop
         (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)   // for mobile
 

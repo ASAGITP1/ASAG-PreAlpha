@@ -12,7 +12,7 @@ Item {
     z: 5
 
     property Enemy tenemy: enemy
-    property EntityBase tplay: playa
+    property EntityBase tplay
 
     property var moduleList: moduleList
 

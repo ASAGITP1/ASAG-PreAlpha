@@ -22,6 +22,23 @@ Scene {
     enabled: visible
 
 
+
+
+    Keys.forwardTo: player.controller
+
+
+
+
+    PhysicsWorld {
+        debugDrawVisible: false // set this to false to hide the physics overlay
+        updatesPerSecondForPhysics: 60
+    }
+
+
+
+
+
+
     Text {
        anchors.horizontalCenter: parent.horizontalCenter
        y: 30
@@ -50,8 +67,10 @@ Scene {
 
 
     Player {
-        x: 300
-        y: 600
+        id: player
+        sceneP: gamescene
+        x: 200
+        y: 500
     }
 
 }

@@ -7,7 +7,7 @@ import "../Player"
 import "../Scenes"
 
 Scene {
-    id: mainmenuscene
+    id: gamescene
     property GameWindow scenemaster
 
     width: 640
@@ -20,6 +20,23 @@ Scene {
     visible: opacity > 0
     // if the scene is invisible, we disable it. In Qt 5, components are also enabled if they are invisible. This means any MouseArea in the Scene would still be active even we hide the Scene, since we do not want this to happen, we disable the Scene (and therefore also its children) if it is hidden
     enabled: visible
+
+
+
+
+    Keys.forwardTo: player.controller
+
+
+
+
+    PhysicsWorld {
+        debugDrawVisible: false // set this to false to hide the physics overlay
+        updatesPerSecondForPhysics: 60
+    }
+
+
+
+
 
 
     Text {
@@ -50,8 +67,10 @@ Scene {
 
 
     Player {
-        x: 300
-        y: 600
+        id: player
+        sceneP: gamescene
+        x: 200
+        y: 500
     }
 
 }

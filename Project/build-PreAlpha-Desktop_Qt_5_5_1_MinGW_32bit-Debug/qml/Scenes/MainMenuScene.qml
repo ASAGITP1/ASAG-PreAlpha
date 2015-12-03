@@ -42,4 +42,19 @@ Scene {
            }
     }
 
+    Rectangle {
+        height: 100
+        width: 200
+        color: "blue"
+
+        x: 400
+        y: 400
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                    scenemaster.switchScene(3);
+               }
+           }
+    }
 }

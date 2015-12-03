@@ -21,7 +21,7 @@ BaseModule{
 
     Image {
         id:image
-        source: "../assets/cannon.png"
+        source: "../../assets/cannon.png"
         height: 100
         width: 100
 
@@ -30,7 +30,7 @@ BaseModule{
     Component.onCompleted: test()
 
     Timer {
-           interval: 100; running: true; repeat: true
+           interval: 100; running: false; repeat: true
            onTriggered: trackingSystem()
        }
 

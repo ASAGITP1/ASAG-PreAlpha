@@ -30,6 +30,11 @@ GameWindow {
         name: "gamescene"
         PropertyChanges {target: gamescene; opacity: 1}
         PropertyChanges {target: gameWindow; activeScene: gamescene}
+      },
+      State {
+          name: "editor"
+          PropertyChanges {target: editorscene; opacity: 1}
+          PropertyChanges {target: gameWindow; activeScene: editorscene}
       }
     ]
 
@@ -46,6 +51,11 @@ GameWindow {
         scenemaster: gameWindow
     }
 
+    Editor {
+        id: editorscene
+        scenemaster: gameWindow
+    }
+
     function switchScene(newscene) {
         switch(newscene) {
         case 1:             // Main Menu
@@ -53,6 +63,9 @@ GameWindow {
             break;
         case 2:             // Game Scene
             state = "gamescene"
+            break;
+        case 3:             // Ship Editor
+            state = "editor"
             break;
         }
     }
