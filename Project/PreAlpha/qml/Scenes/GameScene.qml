@@ -7,7 +7,7 @@ import "../Player"
 import "../Scenes"
 
 Scene {
-    id: mainmenuscene
+    id: gamescene
     property GameWindow scenemaster
 
     width: 640

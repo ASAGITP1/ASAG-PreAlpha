@@ -51,6 +51,11 @@ GameWindow {
         scenemaster: gameWindow
     }
 
+    Editor {
+        id: editorscene
+        scenemaster: gameWindow
+    }
+
     function switchScene(newscene) {
         switch(newscene) {
         case 1:             // Main Menu

@@ -15,10 +15,50 @@ Scene {
     // if the scene is invisible, we disable it. In Qt 5, components are also enabled if they are invisible. This means any MouseArea in the Scene would still be active even we hide the Scene, since we do not want this to happen, we disable the Scene (and therefore also its children) if it is hidden
     enabled: visible
 
+
     Rectangle{
         width: editorscene.width
         height:editorscene.height/6
-        color:red
+        color:"red"
+
+        x: 0
+        y: 0
+    }
+
+    Rectangle{
+        //back to menu
+        width: 30
+        height:30
+        color:"blue"
+
+        x: editorscene.width -40
+        y: 20
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                    scenemaster.switchScene(1);
+               }
+           }
+    }
+
+    Rectangle {
+        width: 50
+        height: 50
+        color: "grey"
+         border.color:"black"
+
+        x: 100
+        y: 300
+    }
+    Rectangle {
+        width: 50
+        height: 50
+        color: "grey"
+         border.color:"black"
+
+        x: 100
+        y: 350
     }
 
 
