@@ -1,4 +1,4 @@
-ASAG – Pre-Alpha Code Structure
+﻿ASAG – Pre-Alpha Code Structure
 
 Directories
 
@@ -8,6 +8,7 @@ Directories
 	-	StoreScene.qml			// Store
 -	Modules
 	-	BaseModule.qml			// BaseModule for inhertance
+	-	ModuleHolder.qml		// For Player Module Slots
 	-	Chaingun.qml
 	- 	LaserCannon.qml
 	-	CommandModule.qml

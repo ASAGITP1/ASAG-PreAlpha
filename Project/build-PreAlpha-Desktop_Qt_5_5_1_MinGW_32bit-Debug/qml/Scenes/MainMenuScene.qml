@@ -1,6 +1,7 @@
 import VPlay 2.0
 import QtQuick 2.0
 
+
 Scene {
     id: mainmenuscene
     property GameWindow scenemaster
@@ -23,7 +24,7 @@ Scene {
        color: "#444444"
        text: "Main Menu Scene"
      }
-
+//yolo
 
     Rectangle {
         height: 100

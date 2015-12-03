@@ -1,5 +1,6 @@
 import VPlay 2.0
 import QtQuick 2.0
+import "Scenes"
 
 GameWindow {
     id: gameWindow
@@ -31,8 +32,6 @@ GameWindow {
         PropertyChanges {target: gameWindow; activeScene: gamescene}
       }
     ]
-
-
 
 
 

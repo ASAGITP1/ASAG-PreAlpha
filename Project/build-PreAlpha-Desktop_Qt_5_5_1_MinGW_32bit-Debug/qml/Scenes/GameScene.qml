@@ -1,6 +1,11 @@
 import VPlay 2.0
 import QtQuick 2.0
 
+import "../Enemy"
+import "../Modules"
+import "../Player"
+import "../Scenes"
+
 Scene {
     id: mainmenuscene
     property GameWindow scenemaster
@@ -40,6 +45,13 @@ Scene {
                     scenemaster.switchScene(1);
                }
            }
+    }
+
+
+
+    Player {
+        x: 300
+        y: 600
     }
 
 }
