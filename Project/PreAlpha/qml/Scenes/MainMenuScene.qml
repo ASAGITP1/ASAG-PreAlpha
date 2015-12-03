@@ -23,7 +23,7 @@ Scene {
        color: "#444444"
        text: "Main Menu Scene"
      }
-
+//yolo
 
     Rectangle {
         height: 100
