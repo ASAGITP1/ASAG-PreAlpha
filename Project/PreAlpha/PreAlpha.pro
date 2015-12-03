@@ -34,3 +34,7 @@ ios {
     OTHER_FILES += $$QMAKE_INFO_PLIST
 }
 
+HEADERS += \
+    xread.h \
+    xwrite.h
+

@@ -3,11 +3,19 @@
 
 #include <QQmlApplicationEngine>
 
+//needed for the import of the XML Writer and Reader
+#include <QtQml>
+#include "xread.h"
+#include "xwrite.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication app(argc, argv);
+
+    //for making the XRead and XWrite Objects accessible via QML.
+    qmlRegisterType<Xwrite>("xwrite", 1, 0, "Xwrite");
+    qmlRegisterType<Xread>("xread", 1, 0, "Xread");
 
     VPApplication vplay;
 
