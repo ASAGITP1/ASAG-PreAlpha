@@ -12,8 +12,6 @@ BaseModule{
     property int shootingRange:         500         // distance in pixel
     property double shootingAngle:      20       // angle on one side
 
-    property Enemy ene: enemy
-
     property int fakex: holder.x
     property int fakey: holder.y
     property int chaingunx: tplay.x + fakex
@@ -21,36 +19,72 @@ BaseModule{
 
     Image {
         id:image
-        source: "../../assets/"
+        source: "../../assets/cannon.png"
         height: 100
         width: 100
 
     }
 
-    Component.onCompleted: test()
-
     Timer {
-           interval: 100; running: false; repeat: true
+           interval: 100; running: true; repeat: true
            onTriggered: trackingSystem()
        }
 
     function trackingSystem() {
 
+        var erray = entityManager.getEntityArrayByType("enemy");
 
-       var enemyDistance = chainguny - ene.y
-       var angle = shootingAngle/57 // grad -> rad
-       var offset = Math.tan(angle) * enemyDistance
-       var lLimit = chaingunx - offset
-       var rLimit = chaingunx + offset
+        var ene;
+        var targetArray = new Array;
+        var j = 0;
+
+        for(var i = 0; i < erray.length; i++) {
+
+           ene = erray[i];
+
+           var enemyDistance = chainguny - ene.y
+           var angle = shootingAngle/57 // grad -> rad
+           var offset = Math.tan(angle) * enemyDistance
+           var lLimit = chaingunx - offset
+           var rLimit = chaingunx + offset
 
 
-        if(ene.x > lLimit && ene.x < rLimit && ene.y > (chainguny - shootingRange)) {
-            shoot()
+            if(ene.x > lLimit && ene.x < rLimit && ene.y > (chainguny - shootingRange)) {
+                targetArray[j] = ene;
+                j++;
+            }
         }
+
+
+        if(j > 0) {
+
+            var target = targetArray[0];
+
+            var xdiff = target.x - chaingunx;
+            var ydiff = target.y - chainguny;
+            if(xdiff < 0) xdiff *=-1;
+            var tDiff = Math.sqrt((xdiff*xdiff)+(ydiff*ydiff));
+
+            for(var k = 0; k < targetArray.length; k++) {
+
+                var xdiff2 = targetArray[k].x - chaingunx;
+                var ydiff2 = targetArray[k].y - chainguny;
+                if(xdiff2 < 0) xdiff2 *=-1;
+
+                var ptDiff = Math.sqrt((xdiff2*xdiff2)+(ydiff2*ydiff2));
+                if(tDiff > ptDiff) {
+                    target = targetArray[k];
+                    console.debug("New Target: " + ptDiff + " < " + tDiff);
+                }
+            }
+
+            shoot(target);
+        }
+
     }
 
 
-    function shoot() {
+    function shoot(ene) {
 
         var offset = (chaingunx - (ene.x-(ene.width/2))) / (chainguny - ene.y)
 
@@ -60,7 +94,7 @@ BaseModule{
             offset: -offset
         }
 
-       entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("Shot.qml"), newEntityProperties  )
+       entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Player/Shot.qml"), newEntityProperties  )
     }
 
 

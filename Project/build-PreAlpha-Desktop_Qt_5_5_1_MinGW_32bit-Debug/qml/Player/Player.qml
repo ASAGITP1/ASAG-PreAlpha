@@ -13,8 +13,6 @@ EntityBase {
     property Scene sceneP: scene
     property alias controller: twoAxisController
 
-    property Enemy enemy: sceneP.enemy
-
     Rectangle {
         anchors.fill: parent
         color: "#AAAAAA"
@@ -51,7 +49,6 @@ EntityBase {
         x: 0
         y: 0
         dynamicModule: moduleList.chaingun
-        tenemy: enemy
         tplay: playerr
     }
 
@@ -59,7 +56,6 @@ EntityBase {
         x: 100
         y: 0
         dynamicModule: moduleList.chaingun
-        tenemy: enemy
         tplay: playerr
     }
 
@@ -67,7 +63,6 @@ EntityBase {
         x: 0
         y: 100
         dynamicModule: moduleList.chaingun
-        tenemy: enemy
         tplay: playerr
     }
 

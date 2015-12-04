@@ -35,7 +35,31 @@ Scene {
     }
 
 
+    Timer {
+           interval: 2000; running: true; repeat: true
+           onTriggered: spawnEnemy()
+       }
 
+    function spawnEnemy() {
+        var newEntityProperties = {
+            x: Math.random() * 500 + 50,
+            y: 100
+        }
+
+       entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  )
+    }
+
+
+    EntityManager {
+       id: entityManager
+       entityContainer: gamescene
+       poolingEnabled: true
+
+       dynamicCreationEntityList: [
+                Qt.resolvedUrl("../Player/Shot.qml"),
+                Qt.resolvedUrl("../Enemy/Enemy.qml")
+           ]
+     }
 
 
 
@@ -49,12 +73,12 @@ Scene {
 
 
     Rectangle {
-        height: 100
-        width: 200
+        height: 50
+        width: 50
         color: "blue"
 
-        x: 100
-        y: 200
+        x: gamescene.width - 50
+        y: 50
 
         MouseArea {
                anchors.fill: parent

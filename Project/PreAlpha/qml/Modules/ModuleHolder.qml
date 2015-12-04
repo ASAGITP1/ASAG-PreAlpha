@@ -11,7 +11,6 @@ Item {
 
     z: 5
 
-    property Enemy tenemy: enemy
     property EntityBase tplay
 
     property var moduleList: moduleList
@@ -20,7 +19,6 @@ Item {
 
     Loader{
         sourceComponent:dynamicModule
-        property Enemy enemy: tenemy
     }
 
     ModuleList {
