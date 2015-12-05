@@ -74,7 +74,6 @@ BaseModule{
                 var ptDiff = Math.sqrt((xdiff2*xdiff2)+(ydiff2*ydiff2));
                 if(tDiff > ptDiff) {
                     target = targetArray[k];
-                    console.debug("New Target: " + ptDiff + " < " + tDiff);
                 }
             }
 
@@ -91,7 +90,9 @@ BaseModule{
         var newEntityProperties = {
             x: chaingunx + chaingun.width/2 - 10,
             y: chainguny - 20,
-            offset: -offset
+            offset: -offset,
+            dmg: 1,
+            shottype: "chaingun"
         }
 
        entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Player/Shot.qml"), newEntityProperties  )

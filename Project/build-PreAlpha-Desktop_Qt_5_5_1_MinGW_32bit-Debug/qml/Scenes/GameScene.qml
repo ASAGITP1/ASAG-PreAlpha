@@ -36,7 +36,7 @@ Scene {
 
 
     Timer {
-           interval: 2000; running: true; repeat: true
+           interval: 1000; running: true; repeat: true
            onTriggered: spawnEnemy()
        }
 
@@ -53,7 +53,7 @@ Scene {
     EntityManager {
        id: entityManager
        entityContainer: gamescene
-       poolingEnabled: true
+       poolingEnabled: false
 
        dynamicCreationEntityList: [
                 Qt.resolvedUrl("../Player/Shot.qml"),

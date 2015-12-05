@@ -8,6 +8,7 @@ import "../Scenes"
 Item {
 
     property Component chaingun: chaingun
+    property Component lasergun: lasergun
     property Component cmodule1: module1
 
     QtObject {
@@ -24,6 +25,18 @@ Item {
 
         }
     }
+
+
+    Component {
+        id: lasergun
+        Lasergun {
+            id: test
+            height: 100
+            width: 100
+
+        }
+    }
+
 
     Component {
         id: module1

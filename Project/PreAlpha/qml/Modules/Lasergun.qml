@@ -10,7 +10,7 @@ BaseModule{
     id:chaingun
 
     property int shootingRange:         500         // distance in pixel
-    property double shootingAngle:      20       // angle on one side
+    property double shootingAngle:      50          // angle on one side
 
     property int fakex: holder.x
     property int fakey: holder.y
@@ -19,14 +19,14 @@ BaseModule{
 
     Image {
         id:image
-        source: "../../assets/cannon.png"
+        source: "../../assets/lasergun.png"
         height: 100
         width: 100
 
     }
 
     Timer {
-           interval: 100; running: true; repeat: true
+           interval: 500; running: true; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -91,8 +91,8 @@ BaseModule{
             x: chaingunx + chaingun.width/2 - 10,
             y: chainguny - 20,
             offset: -offset,
-            dmg: 1,
-            shottype: "chaingun"
+            dmg: 5,
+            shottype: "lasergun"
         }
 
        entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Player/Shot.qml"), newEntityProperties  )

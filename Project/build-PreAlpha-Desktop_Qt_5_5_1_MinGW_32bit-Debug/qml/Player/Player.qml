@@ -55,7 +55,7 @@ EntityBase {
     ModuleHolder {
         x: 100
         y: 0
-        dynamicModule: moduleList.chaingun
+        dynamicModule: moduleList.lasergun
         tplay: playerr
     }
 
@@ -69,7 +69,7 @@ EntityBase {
     ModuleHolder {
         x: 100
         y: 100
-        dynamicModule: moduleList.cmodule1
+        dynamicModule: moduleList.lasergun
     }
 
     ModuleHolder {

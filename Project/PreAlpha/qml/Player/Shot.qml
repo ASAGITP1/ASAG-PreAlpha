@@ -10,9 +10,11 @@ import "../Scenes"
 EntityBase {
     id: shotEntity
     entityType: "shot"
-    poolingEnabled: true
+    poolingEnabled: false
 
-        property var offset: 0
+    property double offset: 0
+    property int dmg
+    property string shottype
 
         Image {
             id:image
@@ -36,8 +38,13 @@ EntityBase {
                onTriggered: if(y < -100) shotEntity.removeEntity()
         }
 
-        Component.onCompleted: startPhys()
+        Component.onCompleted: completed()
 
+
+        function completed() {
+            startPhys();
+            selectShot();
+        }
 
         function startPhys() {
 
@@ -50,6 +57,14 @@ EntityBase {
             var angle = Math.atan(tanval) * 57
             var rot = (angle < 0) ? (angle+90) : (angle-90)
             shotEntity.rotation = rot
+        }
+
+        function selectShot() {
+            if(shottype == "chaingun") {
+                image.source = "../../assets/bullet.png";
+            } else if(shottype == "lasergun") {
+                image.source = "../../assets/lasershot.png";
+            }
         }
 
  }

@@ -26,7 +26,7 @@ EntityBase{
             var body = other.getBody();
             var collidedEntity = body.target;
             var collidedEntityType = collidedEntity.entityType;
-            getHit(collidedEntityType);
+            getHit(other, collidedEntityType);
         }
     }
 
@@ -37,9 +37,11 @@ EntityBase{
         collider.linearVelocity = Qt.point(0, 25)
     }
 
-    function getHit(type) {
+    function getHit(other, type) {
         if(type === "shot") {
-            hp--;
+            var dmg = other.getBody().target.dmg;
+            hp -= dmg;
+            other.getBody().target.removeEntity();
             if(hp <= 0)
                 enemy.removeEntity();
         }
