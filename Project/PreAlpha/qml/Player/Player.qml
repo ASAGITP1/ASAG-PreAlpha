@@ -13,6 +13,24 @@ EntityBase {
     property Scene sceneP: scene
     property alias controller: twoAxisController
 
+
+    property var engines: new Array
+    property int enginesI: 0
+
+    property double forwardSpeed: 100
+    property double forwardSpeedBase: 100
+    property double forwardBoost: 1
+
+    property double sidewaySpeed: 200
+    property double sidewaySpeedBase: 200
+    property double sidewayBoost: 1
+
+
+
+    Component.onCompleted: initialize()
+
+
+
     Rectangle {
         anchors.fill: parent
         color: "#AAAAAA"
@@ -39,13 +57,14 @@ EntityBase {
         categories: Box.Category1
 
         property int speed: system.desktopPlatform ? // controls (
-        twoAxisController.xAxis * 200 :  //  for desktop
-        (accelerometer.reading !== null ? -accelerometer.reading.x * 200 : 0)   // for mobile
+        twoAxisController.xAxis * sidewaySpeed:  //  for desktop
+        (accelerometer.reading !== null ? -accelerometer.reading.x * sidewaySpeed : 0)   // for mobile
 
         linearVelocity: Qt.point(speed, 0)
     }
 
     ModuleHolder {
+        id: module1
         x: 0
         y: 0
         dynamicModule: moduleList.chaingun
@@ -90,15 +109,37 @@ EntityBase {
     ModuleHolder {
         x: 0
         y: 300
-        dynamicModule: moduleList.cmodule1
+        dynamicModule: moduleList.engines
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 300
-        dynamicModule: moduleList.cmodule1
+        dynamicModule: moduleList.engines
         player: playerr
+    }
+
+
+
+    function initialize() {
+        console.log("Test");
+        calcSpeed();
+    }
+
+    function calcSpeed() {
+        forwardBoost = 1;
+        for(var i = 0; i < enginesI; i++) {
+            forwardBoost += engines[i].boost;
+        }
+        forwardSpeed = forwardSpeedBase * forwardBoost;
+
+        sidewayBoost = 1;
+        for(i = 0; i < enginesI; i++) {
+            sidewayBoost += engines[i].thrust;
+        }
+        sidewaySpeed = sidewaySpeedBase * sidewayBoost;
+        console.log("SidewaySpeed: " + sidewaySpeed);
     }
 
 
