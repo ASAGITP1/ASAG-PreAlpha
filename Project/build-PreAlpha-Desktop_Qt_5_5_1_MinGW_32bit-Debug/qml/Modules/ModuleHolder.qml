@@ -11,7 +11,7 @@ Item {
 
     z: 5
 
-    property EntityBase tplay
+    property EntityBase player
 
     property var moduleList: moduleList
 

@@ -14,8 +14,11 @@ BaseModule{
 
     property int fakex: holder.x
     property int fakey: holder.y
-    property int chaingunx: tplay.x + fakex
-    property int chainguny: tplay.y + fakey
+    property int chaingunx: player.x + fakex
+    property int chainguny: player.y + fakey
+
+    property var erray: new Array
+
 
     Image {
         id:image
@@ -30,9 +33,10 @@ BaseModule{
            onTriggered: trackingSystem()
        }
 
+
     function trackingSystem() {
 
-        var erray = entityManager.getEntityArrayByType("enemy");
+        erray = entityManager.getEntityArrayByType("enemy");
 
         var ene;
         var targetArray = new Array;

@@ -49,51 +49,56 @@ EntityBase {
         x: 0
         y: 0
         dynamicModule: moduleList.chaingun
-        tplay: playerr
+        player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 0
-        dynamicModule: moduleList.lasergun
-        tplay: playerr
-    }
-
-    ModuleHolder {
-        x: 0
-        y: 100
         dynamicModule: moduleList.chaingun
-        tplay: playerr
+        player: playerr
+    }
+
+    ModuleHolder {
+        x: 0
+        y: 100
+        dynamicModule: moduleList.lasergun
+        player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 100
         dynamicModule: moduleList.lasergun
+        player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 200
         dynamicModule: moduleList.cmodule1
+        player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 200
         dynamicModule: moduleList.cmodule1
+        player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 300
         dynamicModule: moduleList.cmodule1
+        player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 300
         dynamicModule: moduleList.cmodule1
+        player: playerr
     }
 
 

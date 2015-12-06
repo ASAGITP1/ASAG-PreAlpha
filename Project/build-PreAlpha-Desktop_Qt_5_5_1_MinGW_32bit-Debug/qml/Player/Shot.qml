@@ -34,7 +34,7 @@ EntityBase {
         }
 
         Timer {
-               interval: 500; running: false; repeat: true
+               interval: 500; running: true; repeat: true
                onTriggered: if(y < -100) shotEntity.removeEntity()
         }
 
