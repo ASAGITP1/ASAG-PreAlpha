@@ -3,42 +3,73 @@
 
 #include <QObject>
 #include <QtWidgets>
+#include <QString>
 
 class Xread : public QObject
 {
     Q_OBJECT
 public:
     explicit Xread(QObject *parent = 0): QObject(parent) {}
-    Q_INVOKABLE void readXML(){
+    Q_INVOKABLE QString readXML(QString nametype, int num){
 
-        /*QFile file("ship.xml");
+        QFile file("ship.xml");
+        //QString nametype= QString::fromStdString(type);
+        QString numid= QString::number(num);
+        //var nametype is used to check if program wants ship or slot information
+        //var numid is used to search for the right slot number
+        QString answerid ="0";
+
 
         if(file.open(QIODevice::ReadOnly)) {
                 QXmlStreamReader xmlReader;
                 xmlReader.setDevice(&file);
-                QList<player> player;
+
                 xmlReader.readNext();
                 //Reading from the file
                 while (!xmlReader.isEndDocument())
                 {
                     if (xmlReader.isStartElement())
                     {
+
                         QString command = xmlReader.name().toString();
-                        if (command == "slot")
+                        if (command == nametype) //searching for the needed tag
                         {
-                            QMessageBox::information(this,name,xmlReader.readElementText());
+
+
+                            if(nametype=="slot"){
+                                                QXmlStreamAttributes attr = xmlReader.attributes();
+
+                                                if (attr.value("num").toString() == numid){
+                                                    answerid=attr.value("id").toString();
+                                                    break;
+
+                                                }
+
+
+
+
+                            }
+                            else{
+                                xmlReader.readNext();
+                            }
+
+
                         }
-                    }else if (xmlReader.isEndElement())
+                        else{
+                            xmlReader.readNext();
+                        }
+                    }else
                     {
                         xmlReader.readNext();
                     }
                 }
                 if (xmlReader.hasError())
                 {
-                    std::cout << "XML error: " << xmlReader.errorString().data() << std::endl;
+                    printf("error in XML...");
                 }
-            }*/
-        printf("hallo");
+            }
+
+        return answerid;
     }
 
 

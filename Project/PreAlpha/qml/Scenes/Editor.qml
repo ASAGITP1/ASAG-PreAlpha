@@ -42,24 +42,7 @@ Scene {
            }
     }
 
-    Rectangle {
-        width: 50
-        height: 50
-        color: "grey"
-         border.color:"black"
 
-        x: 100
-        y: 300
-    }
-    Rectangle {
-        width: 50
-        height: 50
-        color: "grey"
-         border.color:"black"
-
-        x: 100
-        y: 350
-    }
 
 
 }
