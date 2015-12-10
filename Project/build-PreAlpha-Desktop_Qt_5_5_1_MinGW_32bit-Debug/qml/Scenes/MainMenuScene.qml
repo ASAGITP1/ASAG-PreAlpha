@@ -1,5 +1,7 @@
 import VPlay 2.0
 import QtQuick 2.0
+import xread 1.0
+import xwrite 1.0
 
 
 Scene {
@@ -53,8 +55,21 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
+                   editorscene.shipid=xread.readXML("ship")
+                   console.debug(editorscene.shipid)
+                   if(editorscene.shipid==0){
+                       xwrite.writeXML(1)
+                   }
                     scenemaster.switchScene(3);
+
                }
            }
+    }
+
+    Xread{
+        id:xread
+    }
+    Xwrite{
+        id:xwrite
     }
 }

@@ -10,10 +10,10 @@ class Xread : public QObject
     Q_OBJECT
 public:
     explicit Xread(QObject *parent = 0): QObject(parent) {}
-    Q_INVOKABLE QString readXML(QString nametype, int num){
+    Q_INVOKABLE QString readXML(QString nametype, int num=0){
 
         QFile file("ship.xml");
-        //QString nametype= QString::fromStdString(type);
+
         QString numid= QString::number(num);
         //var nametype is used to check if program wants ship or slot information
         //var numid is used to search for the right slot number
@@ -24,7 +24,7 @@ public:
                 QXmlStreamReader xmlReader;
                 xmlReader.setDevice(&file);
 
-                xmlReader.readNext();
+
                 //Reading from the file
                 while (!xmlReader.isEndDocument())
                 {
@@ -34,6 +34,12 @@ public:
                         QString command = xmlReader.name().toString();
                         if (command == nametype) //searching for the needed tag
                         {
+                            if(nametype=="ship")
+                            {
+                                QXmlStreamAttributes attr = xmlReader.attributes();
+                                answerid=attr.value("id").toString();
+                                break;
+                            }
 
 
                             if(nametype=="slot"){
@@ -68,6 +74,9 @@ public:
                     printf("error in XML...");
                 }
             }
+        else{
+            answerid="0";
+        }
 
         return answerid;
     }
