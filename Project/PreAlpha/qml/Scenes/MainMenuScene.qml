@@ -19,6 +19,17 @@ Scene {
     enabled: visible
 
 
+
+    signal levelPressed(string selectedLevel)
+
+
+    onLevelPressed: {
+          // selectedLevel is the parameter of the levelPressed signal
+          scenemaster.gameScene.setLevel(selectedLevel)
+        }
+
+
+
     Text {
        anchors.horizontalCenter: parent.horizontalCenter
        y: 30
@@ -26,12 +37,20 @@ Scene {
        color: "#444444"
        text: "Main Menu Scene"
      }
-//yolo
+
 
     Rectangle {
         height: 100
         width: 200
-        color: "red"
+        color: "#888888"
+
+        Text {
+           anchors.horizontalCenter: parent.horizontalCenter
+           y: 30
+           font.pixelSize: 30
+           color: "#444444"
+           text: "Level 1"
+         }
 
         x: 200
         y: 400
@@ -39,8 +58,36 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                    scenemaster.switchScene(2);
-               }
+                   levelPressed("Level1.qml")
+                   scenemaster.switchScene(2);
+                 }
+           }
+    }
+
+
+
+    Rectangle {
+        height: 100
+        width: 200
+        color: "#888888"
+
+        Text {
+           anchors.horizontalCenter: parent.horizontalCenter
+           y: 30
+           font.pixelSize: 30
+           color: "#444444"
+           text: "Level 2"
+         }
+
+        x: 200
+        y: 510
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                   levelPressed("Level2.qml")
+                   scenemaster.switchScene(2);
+                 }
            }
     }
 
@@ -49,8 +96,8 @@ Scene {
         width: 200
         color: "blue"
 
-        x: 400
-        y: 400
+        x: 50
+        y: 50
 
         MouseArea {
                anchors.fill: parent
@@ -72,4 +119,8 @@ Scene {
     Xwrite{
         id:xwrite
     }
+
+
+
+
 }

@@ -5,13 +5,13 @@ EntityBase{
     id:enemy
     entityType: "enemy"
     width: 50
-    property int hp: 15
+    property int hp: 10
 
     Rectangle {
         id: rectangle
-        height: 50
-        width: 50
-        color: "red"
+        height: 60
+        width: 30
+        color: "orange"
     }
 
 
@@ -34,7 +34,7 @@ EntityBase{
 
 
     function startPhys() {
-        collider.linearVelocity = Qt.point(0, 50)
+        collider.linearVelocity = Qt.point(0, 100)
     }
 
     function getHit(other, type) {

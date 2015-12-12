@@ -5,6 +5,7 @@ import "../Enemy"
 import "../Modules"
 import "../Player"
 import "../Scenes"
+import "../Levels"
 
 Scene {
     id: gamescene
@@ -27,6 +28,42 @@ Scene {
     Keys.forwardTo: player.controller
 
 
+    // the filename of the current level gets stored here, it is used for loading the
+    property string activeLevelFileName
+    // the currently loaded level gets stored here
+    property variant activeLevel
+
+    function setLevel(fileName) {
+       activeLevelFileName = fileName
+     }
+
+    Loader {
+       id: loader
+       width: gamescene.width
+       height: gamescene.height
+       source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
+       onLoaded: {
+            console.debug(source);
+       }
+     }
+
+
+    Rectangle {
+        height: 50
+        width: 50
+        color: "blue"
+
+        x: gamescene.width - 50
+        y: 50
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                    scenemaster.switchScene(1);
+               }
+           }
+    }
+
 
 
     PhysicsWorld {
@@ -35,19 +72,6 @@ Scene {
     }
 
 
-    Timer {
-           interval: 1000; running: true; repeat: true
-           onTriggered: spawnEnemy()
-       }
-
-    function spawnEnemy() {
-        var newEntityProperties = {
-            x: Math.random() * 500 + 50,
-            y: 100
-        }
-
-       entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  )
-    }
 
 
     EntityManager {
@@ -70,23 +94,6 @@ Scene {
        color: "#444444"
        text: "Game Scene"
      }
-
-
-    Rectangle {
-        height: 50
-        width: 50
-        color: "blue"
-
-        x: gamescene.width - 50
-        y: 50
-
-        MouseArea {
-               anchors.fill: parent
-               onClicked: {
-                    scenemaster.switchScene(1);
-               }
-           }
-    }
 
 
 
