@@ -3,9 +3,10 @@ import VPlay 2.0
 
 BaseLevel {
   levelName: "Level2"
+  property bool active: false
 
   Timer {
-         interval: 1000; running: true; repeat: true
+         interval: 1000; running: active; repeat: true
          onTriggered: spawnEnemy()
      }
 

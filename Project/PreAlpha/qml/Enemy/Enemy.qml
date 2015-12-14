@@ -7,6 +7,7 @@ EntityBase{
     width: 50
     property int hp: 15
 
+
     Rectangle {
         id: rectangle
         height: 50

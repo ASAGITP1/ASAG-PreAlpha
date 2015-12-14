@@ -24,8 +24,9 @@ Scene {
 
 
     onLevelPressed: {
-          // selectedLevel is the parameter of the levelPressed signal
-          scenemaster.gameScene.setLevel(selectedLevel)
+            // selectedLevel is the parameter of the levelPressed signal
+            scenemaster.gameScene.setLevel("");
+            scenemaster.gameScene.setLevel(selectedLevel)
         }
 
 

@@ -39,11 +39,13 @@ Scene {
 
     Loader {
        id: loader
+       property BaseLevel activeLevel
        width: gamescene.width
        height: gamescene.height
        source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
        onLoaded: {
-            console.debug(source);
+            activeLevel = loader.children[0];
+            activeLevel.active = true;
        }
      }
 
@@ -59,7 +61,8 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                    scenemaster.switchScene(1);
+                   endLevel();
+                   scenemaster.switchScene(1);
                }
            }
     }
@@ -102,6 +105,14 @@ Scene {
         sceneP: gamescene
         x: 200
         y: 500
+    }
+
+
+    function endLevel() {
+        loader.activeLevel.active = false;
+        var toRemoveEntityTypes = ["enemy", "shot"];
+        entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
+
     }
 
 }

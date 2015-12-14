@@ -123,7 +123,6 @@ EntityBase {
 
 
     function initialize() {
-        console.log("Test");
         calcSpeed();
     }
 
@@ -139,7 +138,6 @@ EntityBase {
             sidewayBoost += engines[i].thrust;
         }
         sidewaySpeed = sidewaySpeedBase * sidewayBoost;
-        console.log("SidewaySpeed: " + sidewaySpeed);
     }
 
 
