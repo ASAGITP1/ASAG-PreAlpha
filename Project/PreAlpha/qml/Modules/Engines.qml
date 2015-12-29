@@ -10,6 +10,9 @@ BaseModule{
     id:engines
     entityType: "engines"
 
+    hp: 5
+    maxhp: 5
+
     property double boost: 0.6
     property double thrust: 0.6
 

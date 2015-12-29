@@ -12,6 +12,9 @@ BaseModule{
     property int shootingRange:         500         // distance in pixel
     property double shootingAngle:      50          // angle on one side
 
+    hp: 5
+    maxhp: 5
+
     property int fakex: holder.x
     property int fakey: holder.y
     property int lasergunx: player.x + fakex
@@ -21,14 +24,14 @@ BaseModule{
 
     Image {
         id:image
-        source: "../../assets/lasergun.png"
+        source: working ? "../../assets/lasergun.png" : "../../assets/lasergun_broken.png"
         height: 100
         width: 100
 
     }
 
     Timer {
-           interval: 1000; running: true; repeat: true
+           interval: 1000; running: working; repeat: true
            onTriggered: trackingSystem()
        }
 

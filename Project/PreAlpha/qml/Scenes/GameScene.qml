@@ -46,6 +46,7 @@ Scene {
        onLoaded: {
             activeLevel = loader.children[0];
             activeLevel.active = true;
+            activeLevel.playerP = player;
        }
      }
 

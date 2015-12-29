@@ -9,6 +9,8 @@ import "../Scenes"
 
 EntityBase {
     id: playerr
+    entityType: "playership"
+    width: 200
 
     property Scene sceneP: scene
     property alias controller: twoAxisController
@@ -54,7 +56,8 @@ EntityBase {
     BoxCollider {
         id: collider
         bodyType: Body.Dynamic
-        categories: Box.Category1
+        categories: Box.Category9
+        sensor: true
 
         property int speed: system.desktopPlatform ? // controls (
         twoAxisController.xAxis * sidewaySpeed:  //  for desktop
