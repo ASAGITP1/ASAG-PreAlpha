@@ -31,7 +31,7 @@ Scene {
     // the filename of the current level gets stored here, it is used for loading the
     property string activeLevelFileName
     // the currently loaded level gets stored here
-    property variant activeLevel
+    property variant activeLevelE
 
     function setLevel(fileName) {
        activeLevelFileName = fileName
@@ -45,28 +45,13 @@ Scene {
        source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
        onLoaded: {
             activeLevel = loader.children[0];
+            activeLevelE = loader.children[0];
             activeLevel.active = true;
             activeLevel.playerP = player;
        }
      }
 
 
-    Rectangle {
-        height: 50
-        width: 50
-        color: "blue"
-
-        x: gamescene.width - 50
-        y: 50
-
-        MouseArea {
-               anchors.fill: parent
-               onClicked: {
-                   endLevel();
-                   scenemaster.switchScene(1);
-               }
-           }
-    }
 
 
 
@@ -90,6 +75,15 @@ Scene {
      }
 
 
+    Image {
+        anchors.fill: parent
+        source: "../../assets/UI/Background.png"
+        z: 0
+        id: background
+    }
+
+
+
 
     Text {
        anchors.horizontalCenter: parent.horizontalCenter
@@ -105,11 +99,32 @@ Scene {
         id: player
         sceneP: gamescene
         x: 200
-        y: 500
+        y: parent.height - player.height - 100
     }
 
 
+    Rectangle {
+        height: 50
+        width: 50
+        color: "blue"
+
+        x: gamescene.width - 50
+        y: 50
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                   endLevel();
+                   scenemaster.switchScene(1);
+               }
+           }
+    }
+
+
+
+
     function endLevel() {
+        activeLevelE.end();
         loader.activeLevel.active = false;
         var toRemoveEntityTypes = ["enemy", "shot"];
         entityManager.removeEntitiesByFilter(toRemoveEntityTypes)

@@ -20,8 +20,8 @@ BaseModule{
 
     Rectangle {
         color: "red"
-        width: 94
-        height: 94
+        width: 44
+        height: 44
         x: 3
         y: 3
     }

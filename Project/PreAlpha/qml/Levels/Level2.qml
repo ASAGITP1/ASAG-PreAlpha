@@ -1,21 +1,35 @@
 import QtQuick 2.0
 import VPlay 2.0
 
+import "../Enemy"
+import "../Modules"
+import "../Player"
+import "../Scenes"
+
 BaseLevel {
-  levelName: "Level2"
-  property bool active: false
+    id: level2
+    levelName: "Level2"
 
-  Timer {
-         interval: 1000; running: active; repeat: true
-         onTriggered: spawnEnemy()
-     }
+      Timer {
+             interval: 1500; running: active; repeat: true
+             onTriggered: spawnEnemy()
+         }
 
-  function spawnEnemy() {
-      var newEntityProperties = {
-          x: Math.random() * 500 + 50,
-          y: 10
+      Component.onCompleted: {
+          backgroundMusic.source = "../../assets/Music/Undaunted.mp3";
+          backgroundMusic.play();
       }
 
-     entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy2.qml"), newEntityProperties  )
-  }
+
+      function spawnEnemy() {
+          var newEntityProperties = {
+              x: Math.random() * 500 + 50,
+              y: 10,
+              player: playerP
+          }
+
+         entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy2.qml"), newEntityProperties  )
+      }
+
 }
+

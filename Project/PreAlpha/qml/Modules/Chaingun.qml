@@ -9,7 +9,7 @@ import "../Scenes"
 BaseModule{
     id:chaingun
 
-    property int shootingRange:         500         // distance in pixel
+    property int shootingRange:         650         // distance in pixel
     property double shootingAngle:      20       // angle on one side
 
     hp: 5
@@ -22,13 +22,20 @@ BaseModule{
 
     property var erray: new Array
 
+    Rectangle {
+        color: "#DDDDDD"
+        height: parent.height - 6
+        width: parent.width - 6
+        x: 3
+        y: 3
+    }
 
     Image {
         id:image
-        source: working ? "../../assets/cannon.png": "../../assets/cannon_broken.png"
-        height: 100
-        width: 100
-
+        source: working ? "../../assets/Player/cannon1.png": "../../assets/Player/cannon_broken.png"
+        height: parent.height
+        width: parent.width
+        opacity: 0.8
     }
 
     Timer {
@@ -92,13 +99,13 @@ BaseModule{
 
     function shoot(ene) {
 
-        var offset = (chaingunx - (ene.x-(ene.width/2))) / (chainguny - ene.y)
+        var offset = (chaingunx - (ene.x+(ene.width/2))) / (chainguny - ene.y)
 
         var newEntityProperties = {
             x: chaingunx + chaingun.width/2 - 10,
             y: chainguny - 20,
             offset: -offset,
-            dmg: 1,
+            dmg: 2,
             shottype: "chaingun"
         }
 

@@ -9,10 +9,11 @@ import "../Scenes"
 EntityBase{
     id:enemy
     entityType: "enemy"
-    width: 50
-    property int hp: 55 // 15
+    width: 75
+    height: 75
+    property int hp: 15 // 15
 
-    property int shootingRange:         1500         // distance in pixel
+    property int shootingRange:         1000         // distance in pixel
     property double shootingAngle:      20       // angle on one side
 
     property Player player;
@@ -20,18 +21,17 @@ EntityBase{
     property int playerY: player.y + player.width/2;
 
 
-    Rectangle {
-        id: rectangle
-        height: 50
-        width: 50
-        color: "red"
+    Image {
+        id:image
+        source: "../../assets/Enemy/enemy1.png"
+         anchors.fill: parent
     }
 
 
     BoxCollider {
         id: collider
-        height: 50
-        width: 50
+        height: parent.height
+        width: parent.width
         categories: Box.Category3
         collidesWith: Box.Category1 | Box.Category2
         sensor: true
@@ -47,7 +47,7 @@ EntityBase{
 
 
     Timer {
-           interval: 500; running: true; repeat: true
+           interval: 1000; running: true; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -87,7 +87,7 @@ EntityBase{
 
 
     function startPhys() {
-        collider.linearVelocity = Qt.point(0, 50)
+        collider.linearVelocity = Qt.point(0, 80)
     }
 
     function getHit(other, type) {

@@ -21,8 +21,8 @@ Item {
         id: chaingun
         Chaingun {
             id: test
-            height: 100
-            width: 100
+            height: 50
+            width: 50
 
         }
     }
@@ -32,8 +32,8 @@ Item {
         id: lasergun
         Lasergun {
             id: test
-            height: 100
-            width: 100
+            height: 50
+            width: 50
 
         }
     }
@@ -42,8 +42,8 @@ Item {
         id: engines
         Engines {
             id: test
-            height: 100
-            width: 100
+            height: 50
+            width: 50
 
         }
     }

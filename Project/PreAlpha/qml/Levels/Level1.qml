@@ -9,16 +9,18 @@ import "../Scenes"
 BaseLevel {
     id: level1
     levelName: "Level1"
-    property bool active: false
-    property Player playerP;
 
       Timer {
-             interval: 5000; running: active; repeat: true
+             interval: 1000; running: active; repeat: true
              onTriggered: spawnEnemy()
          }
 
       Component.onCompleted: {
+          backgroundMusic.source = "../../assets/Music/Rhinoceros.mp3";
+          backgroundMusic.play();
       }
+
+
 
       function spawnEnemy() {
           var newEntityProperties = {
@@ -29,6 +31,7 @@ BaseLevel {
 
          entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  )
       }
+
 
 }
 
