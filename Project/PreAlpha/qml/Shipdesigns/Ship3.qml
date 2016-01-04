@@ -1,6 +1,11 @@
 import QtQuick 2.0
 import VPlay 2.0
 
+import "../Enemy"
+import "../Modules"
+import "../Player"
+import "../Scenes"
+
 Item {
     Rectangle {
         width: 500
@@ -9,7 +14,7 @@ Item {
         y:300
         x:100
 
-        color: "red"
+        color: "grey"
 
 
         Slot {

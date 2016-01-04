@@ -6,8 +6,9 @@ import xwrite 1.0
 import "../Enemy"
 import "../Modules"
 import "../Player"
-import "../Scenes"
 import "../Shipdesigns"
+import "../vars.js" as Global
+
 
 Scene {
     id: editorscene
@@ -26,8 +27,32 @@ Scene {
     property int shipid : xread.readXML("ship")
     property Component loadedship:loader.ship1
 
+
+
     Component.onCompleted: {
         getshipdesign()
+        xwrite.writeXML(1,2,3,4,3,2,4)
+        Global.globalshipid=shipid
+        Global.id01=xread.readXML("slot",1)
+        Global.id02=xread.readXML("slot",2)
+        Global.id03=xread.readXML("slot",3)
+        Global.id04=xread.readXML("slot",4)
+        Global.id05=xread.readXML("slot",5)
+        Global.id06=xread.readXML("slot",6)
+        Global.id07=xread.readXML("slot",7)
+        Global.id08=xread.readXML("slot",8)
+        Global.id09=xread.readXML("slot",9)
+        Global.id10=xread.readXML("slot",10)
+        Global.id11=xread.readXML("slot",11)
+        Global.id12=xread.readXML("slot",12)
+        Global.id13=xread.readXML("slot",13)
+        Global.id14=xread.readXML("slot",14)
+        Global.id15=xread.readXML("slot",15)
+        Global.id16=xread.readXML("slot",16)
+        Global.id17=xread.readXML("slot",17)
+        Global.id18=xread.readXML("slot",18)
+        Global.id19=xread.readXML("slot",19)
+        Global.id20=xread.readXML("slot",20)
     }
 
 
@@ -53,8 +78,6 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
-
-
                     scenemaster.switchScene(1);
                }
            }
@@ -72,9 +95,12 @@ Scene {
             break;
         case 3:
             loadedship=loader.ship3
+
             break;
         }
     }
+
+
 
     Loader{
         sourceComponent: loadedship
