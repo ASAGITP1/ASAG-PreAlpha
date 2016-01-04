@@ -20,3 +20,4 @@ var id18=0;
 var id19=0;
 var id20=0;
 var globalshipid=0;
+var activeid=0;

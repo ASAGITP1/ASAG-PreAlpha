@@ -95,19 +95,28 @@ Scene {
     Rectangle {
         height: 100
         width: 200
-        color: "blue"
+        color: "#888888"
 
-        x: 50
-        y: 50
+        x: 200
+        y: 620
+
+        Text {
+           anchors.horizontalCenter: parent.horizontalCenter
+           y: 30
+           font.pixelSize: 30
+           color: "#444444"
+           text: "Editor"
+         }
 
         MouseArea {
                anchors.fill: parent
                onClicked: {
                    editorscene.shipid=xread.readXML("ship")
-                   console.debug(editorscene.shipid)
+                   console.debug("ship id:",editorscene.shipid)
                    if(editorscene.shipid==0){
                        xwrite.writeXML(1)
                    }
+                    editorscene.initialize();
                     scenemaster.switchScene(3);
 
                }

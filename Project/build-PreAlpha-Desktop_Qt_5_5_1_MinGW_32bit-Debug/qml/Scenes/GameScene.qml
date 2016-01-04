@@ -5,6 +5,7 @@ import "../Enemy"
 import "../Modules"
 import "../Player"
 import "../Scenes"
+import "../Levels"
 
 Scene {
     id: gamescene
@@ -27,6 +28,31 @@ Scene {
     Keys.forwardTo: player.controller
 
 
+    // the filename of the current level gets stored here, it is used for loading the
+    property string activeLevelFileName
+    // the currently loaded level gets stored here
+    property variant activeLevelE
+
+    function setLevel(fileName) {
+       activeLevelFileName = fileName
+     }
+
+    Loader {
+       id: loader
+       property BaseLevel activeLevel
+       width: gamescene.width
+       height: gamescene.height
+       source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
+       onLoaded: {
+            activeLevel = loader.children[0];
+            activeLevelE = loader.children[0];
+            activeLevel.active = true;
+            activeLevel.playerP = player;
+       }
+     }
+
+
+
 
 
     PhysicsWorld {
@@ -35,19 +61,6 @@ Scene {
     }
 
 
-    Timer {
-           interval: 1000; running: true; repeat: true
-           onTriggered: spawnEnemy()
-       }
-
-    function spawnEnemy() {
-        var newEntityProperties = {
-            x: Math.random() * 500 + 50,
-            y: 100
-        }
-
-       entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  )
-    }
 
 
     EntityManager {
@@ -62,6 +75,15 @@ Scene {
      }
 
 
+    Image {
+        anchors.fill: parent
+        source: "../../assets/UI/Background.png"
+        z: 0
+        id: background
+    }
+
+
+
 
     Text {
        anchors.horizontalCenter: parent.horizontalCenter
@@ -70,6 +92,15 @@ Scene {
        color: "#444444"
        text: "Game Scene"
      }
+
+
+
+    Player {
+        id: player
+        sceneP: gamescene
+        x: 200
+        y: parent.height - player.height - 100
+    }
 
 
     Rectangle {
@@ -83,18 +114,21 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                    scenemaster.switchScene(1);
+                   endLevel();
+                   scenemaster.switchScene(1);
                }
            }
     }
 
 
 
-    Player {
-        id: player
-        sceneP: gamescene
-        x: 200
-        y: 500
+
+    function endLevel() {
+        activeLevelE.end();
+        loader.activeLevel.active = false;
+        var toRemoveEntityTypes = ["enemy", "shot"];
+        entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
+
     }
 
 }

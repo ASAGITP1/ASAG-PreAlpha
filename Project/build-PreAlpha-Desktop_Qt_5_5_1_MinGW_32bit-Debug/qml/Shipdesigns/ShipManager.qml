@@ -1,6 +1,11 @@
 import QtQuick 2.0
 import VPlay 2.0
 
+import "../Enemy"
+import "../Modules"
+import "../Player"
+import "../Scenes"
+
 Item {
     property Component ship1:ship1
     property Component ship2:ship2

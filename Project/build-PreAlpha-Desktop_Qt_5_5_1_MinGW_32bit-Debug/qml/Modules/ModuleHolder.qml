@@ -9,6 +9,10 @@ import "../Scenes"
 Item {
     id: holder
 
+    property int realX: x + parent.x;
+    property int realY: y + parent.y;
+
+
     z: 5
 
     property EntityBase player

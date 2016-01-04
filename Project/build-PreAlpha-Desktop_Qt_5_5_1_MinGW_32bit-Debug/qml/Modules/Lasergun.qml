@@ -9,8 +9,11 @@ import "../Scenes"
 BaseModule{
     id:lasergun
 
-    property int shootingRange:         500         // distance in pixel
+    property int shootingRange:         1500         // distance in pixel
     property double shootingAngle:      50          // angle on one side
+
+    hp: 5
+    maxhp: 5
 
     property int fakex: holder.x
     property int fakey: holder.y
@@ -19,16 +22,25 @@ BaseModule{
 
     property var erray: new Array
 
+
+    Rectangle {
+        color: "#DDDDDD"
+        height: parent.height - 6
+        width: parent.width - 6
+        x: 3
+        y: 3
+    }
+
     Image {
         id:image
-        source: "../../assets/lasergun.png"
-        height: 100
-        width: 100
-
+        source: working ? "../../assets/Player/cannon2.png" : "../../assets/Player/lasergun_broken.png"
+        height: parent.height
+        width: parent.width
+        opacity: 0.8
     }
 
     Timer {
-           interval: 1000; running: true; repeat: true
+           interval: 500; running: working; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -87,7 +99,7 @@ BaseModule{
 
     function shoot(ene) {
 
-        var offset = (lasergunx - (ene.x-(ene.width/2))) / (laserguny - ene.y)
+        var offset = (lasergunx - (ene.x+(ene.width/2))) / (laserguny - ene.y)
 
        var newEntityProperties = {
             x: lasergunx + lasergun.width/2 - 10,

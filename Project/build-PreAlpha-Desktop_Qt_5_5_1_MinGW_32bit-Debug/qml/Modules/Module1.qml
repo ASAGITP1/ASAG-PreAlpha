@@ -7,13 +7,13 @@ import "../Scenes"
 
 BaseModule {
 
-    width: 100
-    height: 100
+    width: 50
+    height: 50
 
     Rectangle {
         color: "blue"
-        width: 94
-        height: 94
+        width: 44
+        height: 44
         x: 3
         y: 3
     }

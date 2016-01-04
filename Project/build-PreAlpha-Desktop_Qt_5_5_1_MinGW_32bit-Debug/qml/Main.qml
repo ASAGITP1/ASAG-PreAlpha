@@ -10,6 +10,8 @@ GameWindow {
 
     activeScene: mainmenuscene
 
+    property GameScene gameScene: gamescene
+
     width: 640
     height: 960
 

@@ -9,6 +9,9 @@ import "../Scenes"
 
 EntityBase {
     id: playerr
+    entityType: "playership"
+    width: 150
+    height: 150
 
     property Scene sceneP: scene
     property alias controller: twoAxisController
@@ -31,10 +34,10 @@ EntityBase {
 
 
 
-    Rectangle {
+    Image {
         anchors.fill: parent
-        color: "#AAAAAA"
-        z: 0
+        source: "../../assets/Player/ship1.png"
+        z: 99
         id: background
     }
 
@@ -54,7 +57,8 @@ EntityBase {
     BoxCollider {
         id: collider
         bodyType: Body.Dynamic
-        categories: Box.Category1
+        categories: Box.Category9
+        sensor: true
 
         property int speed: system.desktopPlatform ? // controls (
         twoAxisController.xAxis * sidewaySpeed:  //  for desktop
@@ -65,15 +69,29 @@ EntityBase {
 
     ModuleHolder {
         id: module1
-        x: 0
+        x: 50
         y: 0
+        dynamicModule: moduleList.lasergun
+        player: playerr
+    }
+
+    ModuleHolder {
+        x: 0
+        y: 50
+        dynamicModule: moduleList.chaingun
+        player: playerr
+    }
+
+    ModuleHolder {
+        x: 50
+        y: 50
         dynamicModule: moduleList.chaingun
         player: playerr
     }
 
     ModuleHolder {
         x: 100
-        y: 0
+        y: 50
         dynamicModule: moduleList.chaingun
         player: playerr
     }
@@ -81,49 +99,28 @@ EntityBase {
     ModuleHolder {
         x: 0
         y: 100
-        dynamicModule: moduleList.lasergun
+        dynamicModule: moduleList.cmodule1
+        player: playerr
+    }
+
+    ModuleHolder {
+        x: 50
+        y: 100
+        dynamicModule: moduleList.engines
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 100
-        dynamicModule: moduleList.lasergun
-        player: playerr
-    }
-
-    ModuleHolder {
-        x: 0
-        y: 200
         dynamicModule: moduleList.cmodule1
         player: playerr
     }
 
-    ModuleHolder {
-        x: 100
-        y: 200
-        dynamicModule: moduleList.cmodule1
-        player: playerr
-    }
-
-    ModuleHolder {
-        x: 0
-        y: 300
-        dynamicModule: moduleList.engines
-        player: playerr
-    }
-
-    ModuleHolder {
-        x: 100
-        y: 300
-        dynamicModule: moduleList.engines
-        player: playerr
-    }
 
 
 
     function initialize() {
-        console.log("Test");
         calcSpeed();
     }
 
@@ -139,7 +136,6 @@ EntityBase {
             sidewayBoost += engines[i].thrust;
         }
         sidewaySpeed = sidewaySpeedBase * sidewayBoost;
-        console.log("SidewaySpeed: " + sidewaySpeed);
     }
 
 

@@ -10,6 +10,9 @@ BaseModule{
     id:engines
     entityType: "engines"
 
+    hp: 5
+    maxhp: 5
+
     property double boost: 0.6
     property double thrust: 0.6
 
@@ -17,8 +20,8 @@ BaseModule{
 
     Rectangle {
         color: "red"
-        width: 94
-        height: 94
+        width: 44
+        height: 44
         x: 3
         y: 3
     }
