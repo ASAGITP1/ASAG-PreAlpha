@@ -11,6 +11,8 @@ Scene {
     id: gamescene
     property GameWindow scenemaster
 
+    property Player player
+
     width: 640
     height: 960
 
@@ -42,12 +44,14 @@ Scene {
        property BaseLevel activeLevel
        width: gamescene.width
        height: gamescene.height
+       z: 10
        source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
        onLoaded: {
             activeLevel = loader.children[0];
             activeLevelE = loader.children[0];
             activeLevel.active = true;
-            activeLevel.playerP = player;
+            activeLevel.scene = gameScene;
+            player = activeLevel.playerP;
        }
      }
 
@@ -93,14 +97,6 @@ Scene {
        text: "Game Scene"
      }
 
-
-
-    Player {
-        id: player
-        sceneP: gamescene
-        x: 200
-        y: parent.height - player.height - 100
-    }
 
 
     Rectangle {

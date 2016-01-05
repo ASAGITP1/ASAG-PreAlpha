@@ -9,6 +9,7 @@ import "../Scenes"
 BaseLevel {
     id: level1
     levelName: "Level1"
+    playerP: player
 
       Timer {
              interval: 1000; running: active; repeat: true
@@ -18,6 +19,15 @@ BaseLevel {
       Component.onCompleted: {
           backgroundMusic.source = "../../assets/Music/Rhinoceros.mp3";
           backgroundMusic.play();
+      }
+
+
+      Player {
+          id: player
+          sceneP: scene
+          x: 200
+          y: parent.height - player.height - 100
+          z: 20
       }
 
 

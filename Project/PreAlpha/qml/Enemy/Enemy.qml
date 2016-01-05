@@ -11,6 +11,7 @@ EntityBase{
     entityType: "enemy"
     width: 75
     height: 75
+    z: 20
     property int hp: 15 // 15
 
     property int shootingRange:         1000         // distance in pixel

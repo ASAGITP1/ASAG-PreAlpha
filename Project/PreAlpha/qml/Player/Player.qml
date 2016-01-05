@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import VPlay 2.0
 import QtSensors 5.5
+import xread 1.0
 
 import "../Enemy"
 import "../Modules"
@@ -32,6 +33,10 @@ EntityBase {
 
     Component.onCompleted: initialize()
 
+
+    Xread{
+            id:xread
+    }
 
 
     Image {
@@ -71,49 +76,49 @@ EntityBase {
         id: module1
         x: 50
         y: 0
-        dynamicModule: moduleList.lasergun
+        dynamicModule: moduleList.modules[xread.readXML("slot", 1)]
         player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 50
-        dynamicModule: moduleList.chaingun
+        dynamicModule: moduleList.modules[xread.readXML("slot", 2)]
         player: playerr
     }
 
     ModuleHolder {
         x: 50
         y: 50
-        dynamicModule: moduleList.chaingun
+        dynamicModule: moduleList.modules[xread.readXML("slot", 3)]
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 50
-        dynamicModule: moduleList.chaingun
+        dynamicModule: moduleList.modules[xread.readXML("slot", 4)]
         player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 100
-        dynamicModule: moduleList.cmodule1
+        dynamicModule: moduleList.modules[xread.readXML("slot", 5)]
         player: playerr
     }
 
     ModuleHolder {
         x: 50
         y: 100
-        dynamicModule: moduleList.engines
+        dynamicModule: moduleList.modules[xread.readXML("slot", 6)]
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 100
-        dynamicModule: moduleList.cmodule1
+        dynamicModule: moduleList.modules[xread.readXML("slot", 7)]
         player: playerr
     }
 

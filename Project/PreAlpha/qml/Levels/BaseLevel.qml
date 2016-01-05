@@ -10,6 +10,7 @@ Item {
     property string levelName
     property bool active: false
     property Player playerP
+    property Scene scene;
     property BackgroundMusic backgroundMusic: backgroundMusic
 
 
