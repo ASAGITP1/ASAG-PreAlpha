@@ -42,7 +42,7 @@ EntityBase {
     Image {
         anchors.fill: parent
         source: "../../assets/Player/ship1.png"
-        z: 99
+        z: 40
         id: background
     }
 
@@ -76,6 +76,8 @@ EntityBase {
         id: module1
         x: 50
         y: 0
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 1)]
         player: playerr
     }
@@ -83,6 +85,8 @@ EntityBase {
     ModuleHolder {
         x: 0
         y: 50
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 2)]
         player: playerr
     }
@@ -90,6 +94,8 @@ EntityBase {
     ModuleHolder {
         x: 50
         y: 50
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 3)]
         player: playerr
     }
@@ -97,6 +103,8 @@ EntityBase {
     ModuleHolder {
         x: 100
         y: 50
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 4)]
         player: playerr
     }
@@ -104,6 +112,8 @@ EntityBase {
     ModuleHolder {
         x: 0
         y: 100
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 5)]
         player: playerr
     }
@@ -111,6 +121,8 @@ EntityBase {
     ModuleHolder {
         x: 50
         y: 100
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 6)]
         player: playerr
     }
@@ -118,6 +130,8 @@ EntityBase {
     ModuleHolder {
         x: 100
         y: 100
+        z: 50
+        opacity: 0.5
         dynamicModule: moduleList.modules[xread.readXML("slot", 7)]
         player: playerr
     }
