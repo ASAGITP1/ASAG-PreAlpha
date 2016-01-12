@@ -12,6 +12,7 @@ Scene {
     height: 960
 
     property string chosenLevel: "Level1.qml"
+    property int activeLevel: 1
 
     // by default, set the opacity to 0 - this will be changed from the main.qml with PropertyChanges
     opacity: 0
@@ -97,7 +98,7 @@ Scene {
             z: 50
             width: 50
             height: 50
-            source: "../../assets/UI/level_done.png"
+            source: (activeLevel == 1) ? "../../assets/UI/level_sel.png" : "../../assets/UI/level_done.png"
             id: level1img
         }
 
@@ -115,6 +116,7 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
+                   activeLevel = 1
                    chosenLevel = "Level1.qml"
                  }
            }
@@ -134,7 +136,7 @@ Scene {
             z: 50
             width: 50
             height: 50
-            source: "../../assets/UI/level_done.png"
+            source: (activeLevel == 2) ? "../../assets/UI/level_sel.png" : "../../assets/UI/level_done.png"
             id: level2img
         }
 
@@ -152,6 +154,7 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
+                   activeLevel = 2
                    chosenLevel = "Level2.qml"
                  }
            }
@@ -191,6 +194,7 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
+                   activeLevel = 3
                    chosenLevel = "Level2.qml"
                  }
            }
@@ -229,7 +233,8 @@ Scene {
 
         MouseArea {
                anchors.fill: parent
-               onClicked: {
+               onClicked: {                   
+                   activeLevel = 4
                    chosenLevel = "Level2.qml"
                  }
            }
@@ -268,6 +273,7 @@ Scene {
         MouseArea {
                anchors.fill: parent
                onClicked: {
+                   activeLevel = 5
                    chosenLevel = "Level2.qml"
                  }
            }

@@ -65,6 +65,46 @@ Scene {
     }
 
 
+    Rectangle {
+        id: leftwall
+        x: 0
+        y: -100
+        z:70
+        height: parent.height + 200
+        width: 5
+        color: "red"
+        opacity: 0
+
+        BoxCollider {
+            bodyType: Body.Static
+            height: parent.height
+            width: parent.width
+            categories: Box.Category9
+            collidesWith: Box.Category9
+        }
+    }
+
+
+    Rectangle {
+        id: rightwall
+        x: parent.width
+        y: -100
+        z:70
+        height: parent.height + 200
+        width: 5
+        color: "red"
+        opacity: 0
+
+        BoxCollider {
+            bodyType: Body.Static
+            height: parent.height
+            width: parent.width
+            categories: Box.Category9
+            collidesWith: Box.Category9
+        }
+    }
+
+
 
 
     EntityManager {

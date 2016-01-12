@@ -25,8 +25,8 @@ EntityBase {
     property double forwardSpeedBase: 100
     property double forwardBoost: 1
 
-    property double sidewaySpeed: 200
-    property double sidewaySpeedBase: 200
+    property double sidewaySpeed: 400
+    property double sidewaySpeedBase: 400
     property double sidewayBoost: 1
 
 
@@ -61,9 +61,11 @@ EntityBase {
 
     BoxCollider {
         id: collider
+        width: parent.width
+        height: parent.height
         bodyType: Body.Dynamic
         categories: Box.Category9
-        sensor: true
+        sensor: false
 
         property int speed: system.desktopPlatform ? // controls (
         twoAxisController.xAxis * sidewaySpeed:  //  for desktop
