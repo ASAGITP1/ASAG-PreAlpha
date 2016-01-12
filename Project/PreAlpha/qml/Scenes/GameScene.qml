@@ -151,7 +151,6 @@ Scene {
                anchors.fill: parent
                onClicked: {
                    endLevel();
-                   scenemaster.switchScene(1);
                }
            }
     }
@@ -163,8 +162,8 @@ Scene {
         activeLevelE.end();
         loader.activeLevel.active = false;
         var toRemoveEntityTypes = ["enemy", "shot"];
-        entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
-
+        entityManager.removeEntitiesByFilter(toRemoveEntityTypes);
+        scenemaster.switchScene(1);
     }
 
 }

@@ -5,6 +5,7 @@ import "../Enemy"
 import "../Modules"
 import "../Player"
 import "../Scenes"
+import "../Levels"
 
 EntityBase{
     id:enemy
@@ -20,6 +21,8 @@ EntityBase{
     property Player player;
     property int playerX: player.x + player.width/2;
     property int playerY: player.y + player.width/2;
+
+    property BaseLevel level
 
 
     Image {
@@ -96,8 +99,11 @@ EntityBase{
             var dmg = other.getBody().target.dmg;
             hp -= dmg;
             other.getBody().target.removeEntity();
-            if(hp <= 0)
+            if(hp <= 0) {
                 enemy.removeEntity();
+                level.kills ++;
+                level.checkVictory();
+            }
         }
     }
 }

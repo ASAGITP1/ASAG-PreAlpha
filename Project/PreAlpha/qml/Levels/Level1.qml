@@ -11,10 +11,13 @@ BaseLevel {
     levelName: "Level1"
     playerP: player
 
+
       Timer {
-             interval: 1000; running: active; repeat: true
-             onTriggered: spawnEnemy()
+          id: timer
+          interval: 1000; running: active; repeat: true
+          onTriggered: spawnEnemy()
          }
+
 
       Component.onCompleted: {
           backgroundMusic.source = "../../assets/Music/Rhinoceros.mp3";
@@ -33,13 +36,20 @@ BaseLevel {
 
 
       function spawnEnemy() {
-          var newEntityProperties = {
-              x: Math.random() * 500 + 50,
-              y: 10,
-              player: playerP
-          }
+          if(currentSpawns < totalSpawns) {
+              var newEntityProperties = {
+                  x: Math.random() * 500 + 50,
+                  y: 10,
+                  player: playerP,
+                  level: level1
+              }
 
-         entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  )
+             entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  );
+              currentSpawns++;
+          } else {
+                timer.running = false;
+                state = STATE_NOSPAWNING
+          }
       }
 
 
