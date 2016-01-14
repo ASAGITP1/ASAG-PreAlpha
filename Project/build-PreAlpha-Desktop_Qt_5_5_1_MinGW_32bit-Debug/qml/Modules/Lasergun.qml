@@ -33,14 +33,14 @@ BaseModule{
 
     Image {
         id:image
-        source: working ? "../../assets/Player/cannon2.png" : "../../assets/Player/lasergun_broken.png"
+        source: working ? "../../assets/Player/cannon2.png" : "../../assets/Player/cannon2_broken.png"
         height: parent.height
         width: parent.width
         opacity: 0.8
     }
 
     Timer {
-           interval: 500; running: working; repeat: true
+           interval: 1000; running: working; repeat: true
            onTriggered: trackingSystem()
        }
 

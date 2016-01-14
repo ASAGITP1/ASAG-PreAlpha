@@ -21,7 +21,7 @@ Item {
     property int state_PAUSE: 9
 
     property int state: state_RUNNING
-    property int totalSpawns: 10
+    property int totalSpawns
     property int currentSpawns: 0
     property int kills: 0
 

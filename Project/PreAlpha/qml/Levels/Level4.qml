@@ -7,8 +7,8 @@ import "../Player"
 import "../Scenes"
 
 BaseLevel {
-    id: level1
-    levelName: "Level1"
+    id: level4
+    levelName: "Level4"
     playerP: player
 
     property int totalSpawns: 10
@@ -16,7 +16,7 @@ BaseLevel {
 
       Timer {
           id: timer
-          interval: 1000; running: active; repeat: true
+          interval: 800; running: active; repeat: true
           onTriggered: spawnEnemy()
          }
 
@@ -43,10 +43,15 @@ BaseLevel {
                   x: Math.random() * 500 + 50,
                   y: 10,
                   player: playerP,
-                  level: level1
+                  level: level4
               }
 
-             entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  );
+              if(Math.random() > 0.5) {
+                entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy.qml"), newEntityProperties  );
+              } else {
+                  entityManager.createEntityFromUrlWithProperties( Qt.resolvedUrl("../Enemy/Enemy2.qml"), newEntityProperties  );
+              }
+
               currentSpawns++;
           } else {
                 timer.running = false;

@@ -55,7 +55,7 @@ Scene {
         width:editorscene.width
         height:editorscene.width
         source:"../../assets/Player/ship1.png"
-        x:0
+        x:-30
         y:200
     }
 
@@ -163,20 +163,20 @@ Scene {
     Slot{
 
         id:slot1
-        x:220
+        x:250
         y:450
 
     }
 
     Slot{
         id:slot2
-        x:320
-        y:450
+        x:150
+        y:550
 
     }
     Slot{
         id:slot3
-        x:200
+        x:250
         y:550
 
     }
@@ -188,12 +188,18 @@ Scene {
     }
     Slot{
         id:slot5
-        x:200
+        x:150
         y:650
 
     }
     Slot{
         id:slot6
+        x:250
+        y:650
+
+    }
+    Slot{
+        id:slot7
         x:350
         y:650
 
@@ -230,6 +236,7 @@ Scene {
         slot4.slotid=Global.id04
         slot5.slotid=Global.id05
         slot6.slotid=Global.id06
+        slot7.slotid=Global.id07
 
         slot1.swap(slot1.slotid)
         slot2.swap(slot2.slotid)
@@ -237,12 +244,12 @@ Scene {
         slot4.swap(slot4.slotid)
         slot5.swap(slot5.slotid)
         slot6.swap(slot6.slotid)
-        console.debug(slot1.slotid,slot2.slotid,slot3.slotid,slot4.slotid,slot5.slotid,slot6.slotid)
+        slot7.swap(slot7.slotid)
 
     }
 
     function save(){
-        xwrite.writeXML(shipid,slot1.slotid,slot2.slotid,slot3.slotid,slot4.slotid,slot5.slotid,slot6.slotid)
+        xwrite.writeXML(shipid,slot1.slotid,slot2.slotid,slot3.slotid,slot4.slotid,slot5.slotid,slot6.slotid, slot7.slotid)
     }
 
     Xread{

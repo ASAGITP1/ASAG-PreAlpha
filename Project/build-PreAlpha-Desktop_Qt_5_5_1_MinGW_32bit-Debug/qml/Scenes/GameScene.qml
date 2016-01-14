@@ -11,6 +11,8 @@ Scene {
     id: gamescene
     property GameWindow scenemaster
 
+    property Player player
+
     width: 640
     height: 960
 
@@ -42,12 +44,14 @@ Scene {
        property BaseLevel activeLevel
        width: gamescene.width
        height: gamescene.height
+       z: 10
        source: activeLevelFileName !== "" ? "../Levels/" + activeLevelFileName : ""
        onLoaded: {
             activeLevel = loader.children[0];
             activeLevelE = loader.children[0];
             activeLevel.active = true;
-            activeLevel.playerP = player;
+            activeLevel.scene = gameScene;
+            player = activeLevel.playerP;
        }
      }
 
@@ -58,6 +62,46 @@ Scene {
     PhysicsWorld {
         debugDrawVisible: false // set this to false to hide the physics overlay
         updatesPerSecondForPhysics: 60
+    }
+
+
+    Rectangle {
+        id: leftwall
+        x: 0
+        y: -100
+        z:70
+        height: parent.height + 200
+        width: 5
+        color: "red"
+        opacity: 0
+
+        BoxCollider {
+            bodyType: Body.Static
+            height: parent.height
+            width: parent.width
+            categories: Box.Category9
+            collidesWith: Box.Category9
+        }
+    }
+
+
+    Rectangle {
+        id: rightwall
+        x: parent.width
+        y: -100
+        z:70
+        height: parent.height + 200
+        width: 5
+        color: "red"
+        opacity: 0
+
+        BoxCollider {
+            bodyType: Body.Static
+            height: parent.height
+            width: parent.width
+            categories: Box.Category9
+            collidesWith: Box.Category9
+        }
     }
 
 
@@ -95,14 +139,6 @@ Scene {
 
 
 
-    Player {
-        id: player
-        sceneP: gamescene
-        x: 200
-        y: parent.height - player.height - 100
-    }
-
-
     Rectangle {
         height: 50
         width: 50
@@ -115,7 +151,6 @@ Scene {
                anchors.fill: parent
                onClicked: {
                    endLevel();
-                   scenemaster.switchScene(1);
                }
            }
     }
@@ -127,8 +162,8 @@ Scene {
         activeLevelE.end();
         loader.activeLevel.active = false;
         var toRemoveEntityTypes = ["enemy", "shot"];
-        entityManager.removeEntitiesByFilter(toRemoveEntityTypes)
-
+        entityManager.removeEntitiesByFilter(toRemoveEntityTypes);
+        scenemaster.switchScene(1);
     }
 
 }

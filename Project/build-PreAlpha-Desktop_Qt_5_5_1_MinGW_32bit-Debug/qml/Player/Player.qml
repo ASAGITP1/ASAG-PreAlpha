@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import VPlay 2.0
 import QtSensors 5.5
+import xread 1.0
 
 import "../Enemy"
 import "../Modules"
@@ -24,8 +25,8 @@ EntityBase {
     property double forwardSpeedBase: 100
     property double forwardBoost: 1
 
-    property double sidewaySpeed: 200
-    property double sidewaySpeedBase: 200
+    property double sidewaySpeed: 400
+    property double sidewaySpeedBase: 400
     property double sidewayBoost: 1
 
 
@@ -33,11 +34,15 @@ EntityBase {
     Component.onCompleted: initialize()
 
 
+    Xread{
+            id:xread
+    }
+
 
     Image {
         anchors.fill: parent
         source: "../../assets/Player/ship1.png"
-        z: 99
+        z: 40
         id: background
     }
 
@@ -56,9 +61,11 @@ EntityBase {
 
     BoxCollider {
         id: collider
+        width: parent.width
+        height: parent.height
         bodyType: Body.Dynamic
         categories: Box.Category9
-        sensor: true
+        sensor: false
 
         property int speed: system.desktopPlatform ? // controls (
         twoAxisController.xAxis * sidewaySpeed:  //  for desktop
@@ -71,49 +78,63 @@ EntityBase {
         id: module1
         x: 50
         y: 0
-        dynamicModule: moduleList.lasergun
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 1)]
         player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 50
-        dynamicModule: moduleList.chaingun
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 2)]
         player: playerr
     }
 
     ModuleHolder {
         x: 50
         y: 50
-        dynamicModule: moduleList.chaingun
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 3)]
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 50
-        dynamicModule: moduleList.chaingun
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 4)]
         player: playerr
     }
 
     ModuleHolder {
         x: 0
         y: 100
-        dynamicModule: moduleList.cmodule1
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 5)]
         player: playerr
     }
 
     ModuleHolder {
         x: 50
         y: 100
-        dynamicModule: moduleList.engines
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 6)]
         player: playerr
     }
 
     ModuleHolder {
         x: 100
         y: 100
-        dynamicModule: moduleList.cmodule1
+        z: 50
+        opacity: 0.5
+        dynamicModule: moduleList.modules[xread.readXML("slot", 7)]
         player: playerr
     }
 

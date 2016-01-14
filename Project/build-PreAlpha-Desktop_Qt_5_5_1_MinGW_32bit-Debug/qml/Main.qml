@@ -28,6 +28,11 @@ GameWindow {
         PropertyChanges {target: mainmenuscene; opacity: 1}
         PropertyChanges {target: gameWindow; activeScene: mainmenuscene}
       },
+        State {
+          name: "levelselectscene"
+          PropertyChanges {target: levelselectscene; opacity: 1}
+          PropertyChanges {target: gameWindow; activeScene: levelselectscene}
+        },
       State {
         name: "gamescene"
         PropertyChanges {target: gamescene; opacity: 1}
@@ -48,6 +53,11 @@ GameWindow {
         scenemaster: gameWindow
     }
 
+    LevelSelectScene {
+        id: levelselectscene
+        scenemaster: gameWindow
+    }
+
     GameScene {
         id: gamescene
         scenemaster: gameWindow
@@ -64,9 +74,12 @@ GameWindow {
             state = "menu"
             break;
         case 2:             // Game Scene
-            state = "gamescene"
+            state = "levelselectscene"
             break;
         case 3:             // Ship Editor
+            state = "gamescene"
+            break;
+        case 4:             // Game Scene
             state = "editor"
             break;
         }

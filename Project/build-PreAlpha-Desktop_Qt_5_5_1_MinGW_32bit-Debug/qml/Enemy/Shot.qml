@@ -18,7 +18,7 @@ EntityBase {
 
         Image {
             id:image
-            source: "../../assets/bullet.png"
+            source: "../../assets/Enemy/eshot.png"
             height: 50
             width: 20
         }
@@ -49,7 +49,7 @@ EntityBase {
         function startPhys() {
 
             var speed = Math.floor( Math.random() * 300) + 1500
-            var inacc = Math.floor((Math.random() - 0.5) * 100)
+            var inacc = Math.floor((Math.random() - 0.5) * 500)
             var targeting = Math.floor(speed * offset) + inacc
             collider.linearVelocity = Qt.point(targeting, speed)
 
@@ -61,7 +61,7 @@ EntityBase {
 
         function selectShot() {
             if(shottype == "enemy") {
-                image.source = "../../assets/ebullet.png";
+                image.source = "../../assets/Enemey/eshot.png";
             }
         }
 

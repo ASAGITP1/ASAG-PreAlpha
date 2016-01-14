@@ -31,6 +31,15 @@ Scene {
 
 
 
+    Image {
+        anchors.fill: parent
+        source: "../../assets/UI/Background.png"
+        z: 0
+        id: background
+    }
+
+
+
     Text {
        anchors.horizontalCenter: parent.horizontalCenter
        y: 30
@@ -39,89 +48,80 @@ Scene {
        text: "Main Menu Scene"
      }
 
+    Image {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: parent.height - 450
+        z: 50
+        scale: 0.7
+        source: "../../assets/UI/Campaign.png"
+        id: campaign
 
-    Rectangle {
-        height: 100
-        width: 200
-        color: "#888888"
 
-        Text {
-           anchors.horizontalCenter: parent.horizontalCenter
-           y: 30
-           font.pixelSize: 30
-           color: "#444444"
-           text: "Level 1"
-         }
-
-        x: 200
-        y: 400
 
         MouseArea {
                anchors.fill: parent
                onClicked: {
-                   levelPressed("Level1.qml")
                    scenemaster.switchScene(2);
+                 }
+           }
+    }
+
+    Image {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: parent.height - 600
+        z: 50
+        scale: 0.7
+        source: "../../assets/UI/RealmOfTrials.png"
+        id: realmoftrials
+
+
+
+        MouseArea {
+               anchors.fill: parent
+               onClicked: {
                  }
            }
     }
 
 
 
-    Rectangle {
-        height: 100
-        width: 200
-        color: "#888888"
 
-        Text {
-           anchors.horizontalCenter: parent.horizontalCenter
-           y: 30
-           font.pixelSize: 30
-           color: "#444444"
-           text: "Level 2"
-         }
+    Image {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: parent.height - 300
+        z: 50
+        scale: 0.7
+        source: "../../assets/UI/ShipShop.png"
+        id: editor
 
-        x: 200
-        y: 510
+        Rectangle {
+            x: 20
+            y: 50
+            width: 250
+            height: 150
+            color: "#CCCCCC"
+            opacity: 0
 
-        MouseArea {
-               anchors.fill: parent
-               onClicked: {
-                   levelPressed("Level2.qml")
-                   scenemaster.switchScene(2);
-                 }
-           }
-    }
+            MouseArea {
+                   anchors.fill: parent
+                   onClicked: {
+                       editorscene.shipid=xread.readXML("ship")
+                       console.debug("ship id:",editorscene.shipid)
+                       if(editorscene.shipid==0){
+                           xwrite.writeXML(1)
+                       }
+                        editorscene.initialize();
+                        scenemaster.switchScene(4);
 
-    Rectangle {
-        height: 100
-        width: 200
-        color: "#888888"
-
-        x: 200
-        y: 620
-
-        Text {
-           anchors.horizontalCenter: parent.horizontalCenter
-           y: 30
-           font.pixelSize: 30
-           color: "#444444"
-           text: "Editor"
-         }
-
-        MouseArea {
-               anchors.fill: parent
-               onClicked: {
-                   editorscene.shipid=xread.readXML("ship")
-                   console.debug("ship id:",editorscene.shipid)
-                   if(editorscene.shipid==0){
-                       xwrite.writeXML(1)
                    }
-                    editorscene.initialize();
-                    scenemaster.switchScene(3);
-
                }
-           }
+
+
+        }
+
     }
+
+
 
     Xread{
         id:xread

@@ -10,17 +10,20 @@ import "../Levels"
 EntityBase{
     id:enemy
     entityType: "enemy"
-    width: 75
-    height: 75
+    width: 150
+    height: 150
     z: 20
-    property int hp: 5
+    property int hp: 100
 
-    property int shootingRange:         1000         // distance in pixel
-    property double shootingAngle:      20       // angle on one side
+    property int shootingRange:         800         // distance in pixel
+    property double shootingAngle:      40       // angle on one side
 
     property Player player;
     property int playerX: player.x + player.width/2;
     property int playerY: player.y + player.width/2;
+
+    property int enemyX: enemy.x + enemy.width/2;
+    property int enemyY: enemy.y +enemy.width/2;
 
     property BaseLevel level
 
@@ -51,7 +54,7 @@ EntityBase{
 
 
     Timer {
-           interval: 1000; running: true; repeat: true
+           interval: 200; running: true; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -73,11 +76,11 @@ EntityBase{
 
     function shoot(player) {
 
-        var offset = (enemy.x - playerX) / (enemy.y - playerY)
+        var offset = (enemyX - playerX) / (enemyY - playerY)
 
         var newEntityProperties = {
-            x: enemy.x + enemy.width/2 - 5,
-            y: enemy.y + enemy.height + 50,
+            x: enemyX - 5,
+            y: enemyY + 50,
             offset: offset,
             dmg: 1,
             shottype: "eshot1"
@@ -91,7 +94,7 @@ EntityBase{
 
 
     function startPhys() {
-        collider.linearVelocity = Qt.point(0, 120)
+        collider.linearVelocity = Qt.point(0, 50)
     }
 
     function getHit(other, type) {
