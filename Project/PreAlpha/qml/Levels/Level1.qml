@@ -11,12 +11,12 @@ BaseLevel {
     levelName: "Level1"
     playerP: player
 
-    property int totalSpawns: 10
+    totalSpawns: 10
 
 
       Timer {
           id: timer
-          interval: 1000; running: active; repeat: true
+          interval: 500; running: active; repeat: true
           onTriggered: spawnEnemy()
          }
 

@@ -44,7 +44,7 @@ Item {
 
     function checkVictory() {
         if(kills >= totalSpawns) {
-            console.debug("Victory! Kills: " + kills);
+            console.debug("Victory! Kills: " + kills + " / " + totalSpawns);
             victoryTimer.start();
         }
     }

@@ -17,6 +17,8 @@ EntityBase {
     property Scene sceneP: scene
     property alias controller: twoAxisController
 
+    property double moduleOpacity: 0
+
 
     property var engines: new Array
     property int enginesI: 0
@@ -79,7 +81,7 @@ EntityBase {
         x: 50
         y: 0
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 1)]
         player: playerr
     }
@@ -88,7 +90,7 @@ EntityBase {
         x: 0
         y: 50
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 2)]
         player: playerr
     }
@@ -97,7 +99,7 @@ EntityBase {
         x: 50
         y: 50
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 3)]
         player: playerr
     }
@@ -106,7 +108,7 @@ EntityBase {
         x: 100
         y: 50
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 4)]
         player: playerr
     }
@@ -115,7 +117,7 @@ EntityBase {
         x: 0
         y: 100
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 5)]
         player: playerr
     }
@@ -124,7 +126,7 @@ EntityBase {
         x: 50
         y: 100
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 6)]
         player: playerr
     }
@@ -133,7 +135,7 @@ EntityBase {
         x: 100
         y: 100
         z: 50
-        opacity: 0.5
+        opacity: moduleOpacity
         dynamicModule: moduleList.modules[xread.readXML("slot", 7)]
         player: playerr
     }

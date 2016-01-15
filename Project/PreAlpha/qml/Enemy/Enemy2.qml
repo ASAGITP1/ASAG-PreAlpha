@@ -13,10 +13,10 @@ EntityBase{
     width: 75
     height: 75
     z: 20
-    property int hp: 5
+    property int hp: 8
 
-    property int shootingRange:         1000         // distance in pixel
-    property double shootingAngle:      20       // angle on one side
+    property int shootingRange:         800         // distance in pixel
+    property double shootingAngle:      40       // angle on one side
 
     property Player player;
     property int playerX: player.x + player.width/2;
@@ -91,11 +91,11 @@ EntityBase{
 
 
     function startPhys() {
-        collider.linearVelocity = Qt.point(0, 120)
+        collider.linearVelocity = Qt.point(0, 180)
     }
 
     function getHit(other, type) {
-        if(type === "shot") {
+        if(type === "shot" && hp > 0) {
             var dmg = other.getBody().target.dmg;
             hp -= dmg;
             other.getBody().target.removeEntity();

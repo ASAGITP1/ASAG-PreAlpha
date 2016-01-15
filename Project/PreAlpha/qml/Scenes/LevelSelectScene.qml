@@ -51,17 +51,6 @@ Scene {
     }
 
 
-
-    Text {
-       anchors.horizontalCenter: parent.horizontalCenter
-       y: 30
-       font.pixelSize: 30
-       color: "#444444"
-       text: "Level Select Scene"
-     }
-
-
-
     Rectangle {
         height: 50
         width: 50

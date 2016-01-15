@@ -40,14 +40,6 @@ Scene {
 
 
 
-    Text {
-       anchors.horizontalCenter: parent.horizontalCenter
-       y: 30
-       font.pixelSize: 30
-       color: "#444444"
-       text: "Main Menu Scene"
-     }
-
     Image {
         anchors.horizontalCenter: parent.horizontalCenter
         y: parent.height - 450

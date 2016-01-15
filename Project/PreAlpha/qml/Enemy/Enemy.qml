@@ -13,10 +13,10 @@ EntityBase{
     width: 75
     height: 75
     z: 20
-    property int hp: 15 // 15
+    property int hp: 20
 
-    property int shootingRange:         1000         // distance in pixel
-    property double shootingAngle:      20       // angle on one side
+    property int shootingRange:         1000        // distance in pixel
+    property double shootingAngle:      20          // angle on one side
 
     property Player player;
     property int playerX: player.x + player.width/2;
@@ -51,7 +51,7 @@ EntityBase{
 
 
     Timer {
-           interval: 1000; running: true; repeat: true
+           interval: 700; running: true; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -95,7 +95,7 @@ EntityBase{
     }
 
     function getHit(other, type) {
-        if(type === "shot") {
+        if(type === "shot" && hp > 0) {
             var dmg = other.getBody().target.dmg;
             hp -= dmg;
             other.getBody().target.removeEntity();
