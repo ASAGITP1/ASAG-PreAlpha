@@ -132,6 +132,7 @@ Scene {
         height: 50
         width: 50
         color: "blue"
+        opacity: 0
 
         x: gamescene.width - 50
         y: 50

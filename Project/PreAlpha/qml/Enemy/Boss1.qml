@@ -16,7 +16,7 @@ EntityBase{
     property int hp: 200
 
     property int shootingRange:         800         // distance in pixel
-    property double shootingAngle:      40       // angle on one side
+    property double shootingAngle:      40 / 57      // angle on one side
 
     property Player player;
     property int playerX: player.x + player.width/2;
@@ -30,7 +30,7 @@ EntityBase{
 
     Image {
         id:image
-        source: "../../assets/Enemy/enemy1.png"
+        source: "../../assets/Enemy/boss1.png"
          anchors.fill: parent
     }
 
@@ -62,8 +62,7 @@ EntityBase{
     function trackingSystem() {
 
        var yDistance = enemy.y - playerY
-       var angle = shootingAngle/57 // grad -> rad
-       var offset = Math.tan(angle) * yDistance
+       var offset = Math.tan(shootingAngle) * yDistance
        var lLimit = enemy.x + offset
        var rLimit = enemy.x - offset
 

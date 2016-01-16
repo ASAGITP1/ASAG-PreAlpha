@@ -10,7 +10,7 @@ BaseModule{
     id:chaingun
 
     property int shootingRange:         850         // distance in pixel
-    property double shootingAngle:      20       // angle on one side
+    property double shootingAngle:      20 / 57      // angle on one side
 
     hp: 5
     maxhp: 5
@@ -39,7 +39,7 @@ BaseModule{
     }
 
     Timer {
-           interval: 200; running: working; repeat: true
+           interval: 300; running: working; repeat: true
            onTriggered: trackingSystem()
        }
 
@@ -57,8 +57,7 @@ BaseModule{
            ene = erray[i];
 
            var enemyDistance = chainguny - ene.y
-           var angle = shootingAngle/57 // grad -> rad
-           var offset = Math.tan(angle) * enemyDistance
+           var offset = Math.tan(shootingAngle) * enemyDistance
            var lLimit = chaingunx - offset
            var rLimit = chaingunx + offset
 

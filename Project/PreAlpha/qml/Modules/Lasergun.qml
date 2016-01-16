@@ -10,7 +10,7 @@ BaseModule{
     id:lasergun
 
     property int shootingRange:         1500         // distance in pixel
-    property double shootingAngle:      50          // angle on one side
+    property double shootingAngle:      50 / 57          // angle on one side
 
     hp: 5
     maxhp: 5
@@ -58,8 +58,7 @@ BaseModule{
            ene = erray[i];
 
            var enemyDistance = laserguny - ene.y
-           var angle = shootingAngle/57 // grad -> rad
-           var offset = Math.tan(angle) * enemyDistance
+           var offset = Math.tan(shootingAngle) * enemyDistance
            var lLimit = lasergunx - offset
            var rLimit = lasergunx + offset
 
